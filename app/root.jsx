@@ -4,35 +4,44 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
-import { AppProvider } from "@shopify/polaris";
+
+import { AppProvider } from "@shopify/shopify-app-remix/react";
+import { authenticate } from "~/shopify.server";
+
+import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
 import enTranslations from "@shopify/polaris/locales/en.json";
-import polarisStyles from '@shopify/polaris/build/esm/styles.css?url';
 
 export function links() {
-  return [
-    { rel: 'stylesheet', href: polarisStyles },
-  ];
+  return [{ rel: "stylesheet", href: polarisStyles }];
 }
 
+export const loader = async ({ request }) => {
+  const { apiKey } = await authenticate.admin(request);
+  return { apiKey };
+};
+
 export default function App() {
+  const { apiKey } = useLoaderData();
+
   return (
     <html>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="preconnect" href="https://cdn.shopify.com/" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.shopify.com/static/fonts/inter/v4/styles.css"
-        />
         <Meta />
         <Links />
       </head>
       <body>
-        <AppProvider i18n={enTranslations}>
+        <AppProvider
+          apiKey={apiKey}
+          isEmbeddedApp
+          i18n={enTranslations}
+        >
           <Outlet />
         </AppProvider>
+
         <ScrollRestoration />
         <Scripts />
       </body>
