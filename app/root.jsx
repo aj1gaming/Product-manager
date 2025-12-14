@@ -18,8 +18,8 @@ export function links() {
 }
 
 export const loader = async ({ request }) => {
-  const { apiKey } = await authenticate.admin(request);
-  return { apiKey };
+  const { apiKey, headers } = await authenticate.admin(request);
+  return json({ apiKey }, { headers }); 
 };
 
 export default function App() {
