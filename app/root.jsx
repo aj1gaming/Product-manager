@@ -8,11 +8,27 @@ import {
 } from "@remix-run/react";
 
 import { AppProvider } from "@shopify/shopify-app-remix/react";
+import { Provider } from "@shopify/app-bridge-react";
 import { authenticate } from "./shopify.server";
 
 import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
 import enTranslations from "@shopify/polaris/locales/en.json";
 
+export default function App() {
+  return (
+    <Provider
+      config={{
+        apiKey: process.env.SHOPIFY_API_KEY,
+        shopOrigin: window.location.hostname,
+        forceRedirect: true,  // ensures embedded app handshake
+      }}
+    >
+      <AppProvider i18n={enTranslations}>
+        <Outlet />
+      </AppProvider>
+    </Provider>
+  );
+}
 export function links() {
   return [{ rel: "stylesheet", href: polarisStyles }];
 }
