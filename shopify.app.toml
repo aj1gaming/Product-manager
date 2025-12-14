@@ -1,0 +1,31 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "1fe60c4a5d51111130c795de9b995ead"
+name = "Product-manager"
+handle = "product-manager-60"
+application_url = "https://nor-sudden-delegation-fault.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_customers,write_customers,read_products,write_products,read_orders,write_orders,read_third_party_fulfillment_orders,write_third_party_fulfillment_orders,read_script_tags,write_script_tags,read_content,write_content,read_shipping,write_shipping,read_checkouts,write_checkouts,read_discounts,write_discounts,read_price_rules,write_price_rules,read_fulfillments,write_fulfillments,read_assigned_fulfillment_orders,write_assigned_fulfillment_orders,read_locations"
+
+[auth]
+redirect_urls = ["https://nor-sudden-delegation-fault.trycloudflare.com/auth/callback", "https://nor-sudden-delegation-fault.trycloudflare.com/auth/shopify/callback", "https://nor-sudden-delegation-fault.trycloudflare.com/api/auth/callback"]
+
+[pos]
+embedded = false

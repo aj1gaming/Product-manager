@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model NotifySignup {
+  id        Int     @id @default(autoincrement())
+  email     String
+  name      String
+  productId String
+  createdAt DateTime @default(now())
+
+  @@unique([email, productId])
+}
+
+model ProductComment {
+  id         String   @id @default(cuid())
+  productId  String
+  email      String
+  text       String
+  createdAt  DateTime @default(now())
+  customerId String?  // optional
+}
+model Session {
+  id              String   @id
+  shop            String
+  state           String?
+  isOnline        Boolean
+  scope           String?
+  expires         DateTime?
+  accessToken     String
+  userId          BigInt?
+  firstName       String?
+  lastName        String?
+  email           String?
+  accountOwner    Boolean?
+  locale          String?
+  collaborator    Boolean?
+  emailVerified   Boolean?
+  onlineAccessInfo String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
