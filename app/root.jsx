@@ -8,8 +8,8 @@ import {
   json,
 } from "@remix-run/react";
 
-import { AppProvider } from "@shopify/polaris";
-import { Provider as AppBridgeProvider } from "@shopify/app-bridge-react";
+import { AppProvider } from "@shopify/shopify-app-remix/react";
+import { Provider } from "@shopify/app-bridge-react";
 import { authenticate } from "./shopify.server";
 
 import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
@@ -36,9 +36,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <AppBridgeProvider
+        <Provider
           config={{
-            apiKey,
+            apiKey: apiKey,
             shopOrigin: window.location.hostname,
             forceRedirect: true,
           }}
@@ -46,7 +46,7 @@ export default function App() {
           <AppProvider i18n={enTranslations}>
             <Outlet />
           </AppProvider>
-        </AppBridgeProvider>
+        </Provider>
 
         <ScrollRestoration />
         <Scripts />
