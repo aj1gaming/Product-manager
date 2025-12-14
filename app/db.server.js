@@ -8,3 +8,4 @@ if (process.env.NODE_ENV !== "production") {
 
 export const prisma = global.prismaGlobal ?? new PrismaClient();
 
+export default prisma; 
