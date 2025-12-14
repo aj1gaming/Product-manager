@@ -17,7 +17,7 @@ if (
   delete process.env.HOST;
 }
 
-const host = "tigers-newspapers-shannon-advancement.trycloudflare.com";
+const host = "christmas-antibody-freebsd-age.trycloudflare.com";
 let hmrConfig;
 
 if (host === "localhost") {
