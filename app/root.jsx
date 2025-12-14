@@ -8,7 +8,7 @@ import {
 } from "@remix-run/react";
 
 import { AppProvider } from "@shopify/shopify-app-remix/react";
-import { authenticate } from "~/shopify.server";
+import { authenticate } from "./shopify.server";
 
 import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
 import enTranslations from "@shopify/polaris/locales/en.json";
