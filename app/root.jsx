@@ -9,7 +9,6 @@ import {
 } from "@remix-run/react";
 
 import { AppProvider } from "@shopify/shopify-app-remix/react";
-import { Provider } from "@shopify/app-bridge-react";
 import { authenticate } from "./shopify.server";
 
 import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
@@ -36,17 +35,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Provider
-          config={{
-            apiKey: apiKey,
-            shopOrigin: window.location.hostname,
-            forceRedirect: true,
-          }}
-        >
-          <AppProvider i18n={enTranslations}>
-            <Outlet />
-          </AppProvider>
-        </Provider>
+        <AppProvider apiKey={apiKey} i18n={enTranslations}>
+          <Outlet />
+        </AppProvider>
 
         <ScrollRestoration />
         <Scripts />
