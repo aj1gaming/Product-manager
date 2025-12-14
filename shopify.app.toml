@@ -25,7 +25,7 @@ api_version = "2025-04"
 scopes = "read_customers,write_customers,read_products,write_products,read_orders,write_orders,read_third_party_fulfillment_orders,write_third_party_fulfillment_orders,read_script_tags,write_script_tags,read_content,write_content,read_shipping,write_shipping,read_checkouts,write_checkouts,read_discounts,write_discounts,read_price_rules,write_price_rules,read_fulfillments,write_fulfillments,read_assigned_fulfillment_orders,write_assigned_fulfillment_orders,read_locations"
 
 [auth]
-redirect_urls = ["https://nor-sudden-delegation-fault.trycloudflare.com/auth/callback", "https://nor-sudden-delegation-fault.trycloudflare.com/auth/shopify/callback", "https://nor-sudden-delegation-fault.trycloudflare.com/api/auth/callback", "https://product-manager-upvp.onrender.com"]
+redirect_urls = ["https://nor-sudden-delegation-fault.trycloudflare.com/auth/callback", "https://nor-sudden-delegation-fault.trycloudflare.com/auth/shopify/callback", "https://nor-sudden-delegation-fault.trycloudflare.com/api/auth/callback", "https://product-manager-upvp.onrender.com", "https://product-manager-upvp.onrender.com/auth/callback"]
 
 [pos]
 embedded = false
