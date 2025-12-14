@@ -20,8 +20,9 @@
   },
   "type": "module",
   "engines": {
-    "node": "^18.20 || ^20.10 || >=21.0.0"
-  },
+    "node": "20.x"
+  }
+
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "@remix-run/dev": "^2.16.1",
