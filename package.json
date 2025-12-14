@@ -2,6 +2,7 @@
   "name": "product-manager",
   "private": true,
   "scripts": {
+    "postinstall": "node scripts/fix-shopify-json.js",
     "build": "remix build",
     "dev": "shopify app dev",
     "config:link": "shopify app config link",
